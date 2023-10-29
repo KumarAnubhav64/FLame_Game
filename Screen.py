@@ -24,7 +24,7 @@ class FirstWindow(Screen):
             if i not in him_name:
                 uncommon_char.append(i)
         flame = len(uncommon_char)
-        pos_flame = flame % 5
+        pos_flame = flame % 6
         if pos_flame == 0:
             self.ids.Match.source = 'images/Friend.png'
         elif pos_flame == 1:

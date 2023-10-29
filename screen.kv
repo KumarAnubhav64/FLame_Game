@@ -50,25 +50,28 @@ WindowManager:
                 id: Her
                 background_color : (0,0,0,0)
                 multiline: False
-                text:'Her '
+                text:'Her'
                 size_hint: 0.1,0.1
                 padding: 10
                 spacing : 10
                 halign : 'center'
                 font_name: 'asset\Affectionately Yours - TTF.ttf'
+                # on_focus: self.text = '' if args else self.text
                 font_size : 50
                 font_color : (1,1,1,1)
             TextInput:
                 id: Him
                 background_color : (0,0,0,0)
                 multiline: False
-                text:'Him '            
+                text:'Him'            
                 size_hint: 0,0.1
                 padding: 10
                 spacing : 10
                 halign : 'center'
                 font_name: 'asset\Affectionately Yours - TTF.ttf'
+                # on_focus: self.text = '' if args else self.text
                 font_size : 50
+                font_color : (1,1,1,1)
         Label:
             text:''
             size_hint :0,0.1
