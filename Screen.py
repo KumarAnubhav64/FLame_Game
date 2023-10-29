@@ -16,12 +16,14 @@ class FirstWindow(Screen):
         him_name = self.ids.Him.text
         her_name = self.ids.Her.text
         self.ids.Button_Image.source = 'images/Button_pressed.png'
-        list_common = list(set(her_name) & set(him_name))
-        list(list_common).remove(" ")
-        list(him_name).remove(" ")
-        list(her_name).remove(" ")
-        flame = len(him_name) + len(her_name) - (2*len(list_common))
-        flame_name = ["Friendship", "Love", "Affection", "Marriage", "Enemies"]
+        uncommon_char = []
+        for i in him_name:
+            if i not in her_name:
+                uncommon_char.append(i)
+        for i in her_name:
+            if i not in him_name:
+                uncommon_char.append(i)
+        flame = len(uncommon_char)
         pos_flame = flame % 5
         if pos_flame == 0:
             self.ids.Match.source = 'images/Friend.png'
