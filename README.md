@@ -8,3 +8,4 @@
 #if you are having trouble in setting up virtual enviromnet then just just install kivy directly by:
 
 #  pip install kivy
+![alt text](https://github.com/KumarAnubhav64/Flame_Game/images/Screenshot.png?raw=true)
