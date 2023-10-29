@@ -1,0 +1,118 @@
+WindowManager:
+    FirstWindow:
+    # SecondWindow:
+
+<FirstWindow>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'images/Picture1.png'
+
+    BoxLayout:
+        orientation:'vertical'
+        size : root.width , root.height
+        padding: 10
+        spacing: 10
+        Label:
+            markup : True
+            text:''
+            font_size : 40
+            padding: 0
+            spacing :0
+            size_hint: 0,1
+            
+
+        GridLayout:
+            row : 3
+            cols : 2
+            Image:
+                source: 'images/sama.png'
+                size_hint_x : 0.3
+                size_hint_y : 0.3
+                padding: 50
+                spacing : 50
+
+            Image:
+                source: 'images/shiro.png'
+
+                size_hint_x : 0.3
+                size_hint_y : 0.3
+                padding: ('100','100')
+                spacing : ('100','100')
+            Label:
+                text:''
+                size_hint : 0.1,0.1
+            Label:
+                text:''    
+                size_hint : 0,0.1
+            TextInput:
+                id: Her
+                background_color : (0,0,0,0)
+                multiline: False
+                text:'Her '
+                size_hint: 0.1,0.1
+                padding: 10
+                spacing : 10
+                halign : 'center'
+                font_name: 'FREESCPT'
+                font_size : 60
+                font_color : (1,1,1,1)
+            TextInput:
+                id: Him
+                background_color : (0,0,0,0)
+                multiline: False
+                text:'Him '            
+                size_hint: 0,0.1
+                padding: 10
+                spacing : 10
+                halign : 'center'
+                font_name: 'FREESCPT'
+                font_size : 60
+        Label:
+            text:''
+            size_hint :0,0.1
+                
+  
+        Button:
+            text:'Flames'
+            padding: 100
+            spacing : 100
+            on_press: root.FlameLogic()
+            size_hint: 0.5,0.16
+            font_size : 40
+            pos_hint : {'center_x':0.5,'center_y':0}
+            on_release : root.release()
+            Image:
+                id : Button_Image
+                source:'images/Button_not_pressed.png'
+                allow_stretch  :True
+                width : 400
+                center_x: self.parent.center_x
+                center_y : self.parent.center_y
+                
+
+        Image:
+            id: Match
+            source: 'images/love_is_war.png'            
+    
+<RoundedButton@Button>
+    background_color : (0,0,0,0)
+    background_normal: ''
+    canvas.before:
+        Color:
+            rgba : (48/255,84/255,150/255,1)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius : [58]    
+<RoundedTextInput@TextInput>
+    background_color : (0,0,0,0)
+    background_normal: ''
+    canvas.before:
+        Color:
+            rgba : (48/255,84/255,150/255,1)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius : [58]                                   
