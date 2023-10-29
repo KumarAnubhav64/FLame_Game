@@ -40,8 +40,7 @@ class FirstWindow(Screen):
         self.ids.Button_Image.source = 'images/Button_not_pressed.png'
 
 
-# class SecondWindow(Screen):
-#     pass
+
 class WindowManager(ScreenManager):
     pass
 
