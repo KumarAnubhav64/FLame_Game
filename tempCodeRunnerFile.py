@@ -1,0 +1,1 @@
+# return self.pos_flame

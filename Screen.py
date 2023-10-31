@@ -7,10 +7,13 @@ from kivy.properties import ObjectProperty
 from kivy.lang import Builder
 from kivy.core.window import Window
 from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.properties import StringProperty
+
 Window.size = (360, 700)
 # define our differnt screen
 
-
+class SplashWindow(Screen):
+        pass
 class FirstWindow(Screen):
     def FlameLogic(self):
         him_name = self.ids.Him.text
@@ -35,11 +38,17 @@ class FirstWindow(Screen):
             self.ids.Match.source = 'images/mar.png'
         elif pos_flame == 4:
             self.ids.Match.source = 'images/Ene.png'
+        # return self.pos_flame
 
     def release(self):
         self.ids.Button_Image.source = 'images/Button_not_pressed.png'
 
+    # def Match(self, pos_flame):
+    #     wp = ResultWindow(size_hint=(None, None), size=(400, 400))
+    #     wp.open()
 
+class ResultWindow(Screen):
+    pass
 
 class WindowManager(ScreenManager):
     pass

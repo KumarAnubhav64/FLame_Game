@@ -1,8 +1,41 @@
+#: import CardTransition kivy.uix.screenmanager.CardTransition
 WindowManager:
+    transition : CardTransition(duration =1)
+    SplashWindow:
     FirstWindow:
+    ResultWindow:
+<SplashWindow>
+    name : "splash"
+    BoxLayout:
+        orientation:'vertical'
+        size: root.width,root.height
 
+        Button:
+            text:'Next'
+            on_release: 
+                app.root.current = "first"
+
+            Image:
+                id : Button_Image
+                source:'images/transition.png'
+                allow_stretch  :True
+                width : 2000
+                height : 6000
+                center_x: self.parent.center_x
+                center_y : self.parent.center_y
+            Image:
+                id : Result
+                name : "Result_image"
+                source:'images/Love_is_war.png'
+                allow_stretch  :True
+                width : 400
+                height : 400
+                center_x: self.parent.center_x
+                center_y : self.parent.center_y
+            
 
 <FirstWindow>:
+    name :"first"
     canvas.before:
         Rectangle:
             pos: self.pos
@@ -12,8 +45,7 @@ WindowManager:
     BoxLayout:
         orientation:'vertical'
         size : root.width , root.height
-        padding: 10
-        spacing: 10
+
         Label:
             markup : True
             text:''
@@ -36,8 +68,8 @@ WindowManager:
             Image:
                 source: 'images/shiro.png'
 
-                size_hint_x : 0.3
-                size_hint_y : 0.3
+                size_hint_x : 0.2
+                size_hint_y : 0.2
                 padding: ('100','100')
                 spacing : ('100','100')
             Label:
@@ -48,7 +80,8 @@ WindowManager:
                 size_hint : 0,0.1
             TextInput:
                 id: Her
-                background_color : (0,0,0,0)
+                background_color : (0,0,0,0.03)
+                foreground_color : (1,1,1,1)
                 multiline: False
                 text:'Her'
                 size_hint: 0.1,0.1
@@ -57,11 +90,12 @@ WindowManager:
                 halign : 'center'
                 font_name: 'asset\Affectionately Yours - TTF.ttf'
                 # on_focus: self.text = '' if args else self.text
-                font_size : 50
+                font_size : 45
                 font_color : (1,1,1,1)
             TextInput:
                 id: Him
-                background_color : (0,0,0,0)
+                background_color : (0,0,0,0.03)
+                foreground_color : (1,1,1,1)
                 multiline: False
                 text:'Him'            
                 size_hint: 0,0.1
@@ -70,7 +104,7 @@ WindowManager:
                 halign : 'center'
                 font_name: 'asset\Affectionately Yours - TTF.ttf'
                 # on_focus: self.text = '' if args else self.text
-                font_size : 50
+                font_size : 45
                 font_color : (1,1,1,1)
         Label:
             text:''
@@ -85,7 +119,9 @@ WindowManager:
             size_hint: 0.5,0.13
             font_size : 40
             pos_hint : {'center_x':0.5,'center_y':0}
-            on_release : root.release()
+            on_release : 
+                app.root.current = "ResultWindow"
+                root.release()
             Image:
                 id : Button_Image
                 source:'images/Button_not_pressed.png'
@@ -93,12 +129,47 @@ WindowManager:
                 width : 400
                 center_x: self.parent.center_x
                 center_y : self.parent.center_y
-                
+        # Label:
+        #     text:''        
 
         Image:
             id: Match
             source: 'images/love_is_war.png'            
-    
+
+
+            
+<ResultWindow>
+    id : result_window
+    name : "ResultWindow"
+    title : "Match"
+    BoxLayout:
+        orientation:'vertical'
+        size: root.width,root.height
+
+        Button:
+            text:'Next'
+            on_release: 
+                app.root.current = "first"
+
+            Image:
+                id : Button_Image
+                source:'images/transition.png'
+                allow_stretch  :True
+                width : 2000
+                height : 6000
+                center_x: self.parent.center_x
+                center_y : self.parent.center_y
+            Image:
+                id : Result
+                name : "Result_image"
+                source:'images/Love_is_war.png'
+                allow_stretch  :True
+                width : 400
+                height : 400
+                center_x: self.parent.center_x
+                center_y : self.parent.center_y
+            
+
 <RoundedButton@Button>
     background_color : (0,0,0,0)
     background_normal: ''
