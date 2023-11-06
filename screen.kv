@@ -1,38 +1,50 @@
-#: import CardTransition kivy.uix.screenmanager.CardTransition
+
+#: import WipeTransition kivy.uix.screenmanager.WipeTransition
 WindowManager:
-    transition : CardTransition(duration =1)
-    SplashWindow:
+    transition : WipeTransition(duration =0.8)
+    LoadWindow:
     FirstWindow:
     ResultWindow:
-<SplashWindow>
-    name : "splash"
+<LoadWindow>
+    name : "load"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'images/Picture2.png'
+    
     BoxLayout:
-        orientation:'vertical'
+        padding: ('10dp', '50dp', '0dp', '150dp')
+        orientation: 'vertical'
         size: root.width,root.height
-
+        Image:
+            source:"images/Splash.png"
+            width:400
         Button:
+            size_hint: 0.5,0.05
             text:'Next'
-            on_release: 
+            pos_hint : {'center_x':0.5,'center_y':0}
+            on_release: root.start_release()
+            on_press: 
                 app.root.current = "first"
-
             Image:
-                id : Button_Image
-                source:'images/transition.png'
-                allow_stretch  :True
-                width : 2000
-                height : 6000
-                center_x: self.parent.center_x
-                center_y : self.parent.center_y
-            Image:
-                id : Result
-                name : "Result_image"
-                source:'images/Love_is_war.png'
+                id: Start
+                source:"images/Start.png"
                 allow_stretch  :True
                 width : 400
-                height : 400
                 center_x: self.parent.center_x
                 center_y : self.parent.center_y
-            
+        # Label:
+        # ProgressBar:
+        #     id: ProgressBar
+        #     min:0
+        #     max:1
+        #     value:.25
+        #     pos_hint:{'x':0.1}
+        #     size_hint_x: 0.8
+        #     background_color: (1,0,0,1)
+        #     background_normal: None
+
 
 <FirstWindow>:
     name :"first"
@@ -62,15 +74,15 @@ WindowManager:
                 source: 'images/sama.png'
                 size_hint_x : 0.3
                 size_hint_y : 0.3
-                padding: 50
-                spacing : 50
+                padding: 100
+
 
             Image:
                 source: 'images/shiro.png'
 
                 size_hint_x : 0.2
                 size_hint_y : 0.2
-                padding: ('100','100')
+                padding: ('50','100')
                 spacing : ('100','100')
             Label:
                 text:''
@@ -113,7 +125,7 @@ WindowManager:
   
         Button:
             text:'Flames'
-            padding: 100
+            padding: 150
             spacing : 100
             on_press: root.FlameLogic()
             size_hint: 0.5,0.13
@@ -132,9 +144,13 @@ WindowManager:
         # Label:
         #     text:''        
 
-        Image:
+        Label:
             id: Match
-            source: 'images/love_is_war.png'            
+            text: " "  
+            font_name: 'asset\Affectionately Yours - TTF.ttf'
+            opacity:0
+
+
 
 
             
@@ -142,32 +158,49 @@ WindowManager:
     id : result_window
     name : "ResultWindow"
     title : "Match"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'images/Picture2.png'
     BoxLayout:
         orientation:'vertical'
         size: root.width,root.height
+        padding: ('50dp', '50dp', '50dp', '100dp')
+        Image:
+            id: result_image
+            source:"images/Marraige.png"
+            allow_stretch:True
+            width:300
+            height:200
+        Label:
+            id : Result_Label
+            text:'Result_Label'
+            font_name: 'asset\Affectionately Yours - TTF.ttf'
+            font_size: 100
+                
 
         Button:
-            text:'Next'
+            text:'Reset'
+            font_size: 40
+            size_hint: 0.70,0.13
+            pos_hint: {'center_x': 0.5,'pos_y': 0.5}
             on_release: 
+                root.release()
+                root.reset()
                 app.root.current = "first"
-
             Image:
                 id : Button_Image
-                source:'images/transition.png'
-                allow_stretch  :True
-                width : 2000
-                height : 6000
-                center_x: self.parent.center_x
-                center_y : self.parent.center_y
-            Image:
-                id : Result
-                name : "Result_image"
-                source:'images/Love_is_war.png'
+                source:'images/Reset_on_press.png'
                 allow_stretch  :True
                 width : 400
-                height : 400
                 center_x: self.parent.center_x
                 center_y : self.parent.center_y
+        Label:
+            text:''
+            size_hint: 0.55,0.15
+            
+            
             
 
 <RoundedButton@Button>
